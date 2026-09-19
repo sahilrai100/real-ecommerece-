@@ -29,6 +29,9 @@ def random_numbers():
 def home(request):
     section_display=section.objects.all()
     if request.method =='POST':
+        # The contact form uses the sender's account email, so visitors must log in first
+        if not request.user.is_authenticated:
+            return redirect('login')
         subjects=request.POST.get('subject')
         messages=request.POST.get('message')
         username=request.user.username 
