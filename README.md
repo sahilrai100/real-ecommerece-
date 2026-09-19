@@ -1,11 +1,11 @@
 # Zyanya – Django E-commerce Store
 
-An online clothing store built with Django: product sections, product pages, cart, wishlist, coupons, Stripe card payments, email OTP sign-up with reCAPTCHA, and order confirmation emails.
+An online clothing store built with Django: product sections, product pages, cart, wishlist, coupons, Stripe card payments, email OTP sign-up, and order confirmation emails.
 
 ## Tech stack
 - Django 4.2, Python 3.12
 - PostgreSQL in production (SQLite locally)
-- Stripe (payments), Google reCAPTCHA, Gmail SMTP
+- Stripe (payments), Gmail SMTP
 - Bootstrap 5 + django-crispy-forms
 - Hosted on Vercel (serverless Python + WhiteNoise), database on Neon
 
