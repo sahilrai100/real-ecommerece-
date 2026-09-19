@@ -1,0 +1,12 @@
+{
+  "builds": [
+    {
+      "src": "ecommerece/wsgi.py",
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "50mb" }
+    }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "ecommerece/wsgi.py" }
+  ]
+}

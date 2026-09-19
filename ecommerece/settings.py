@@ -18,8 +18,10 @@ from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Secrets live in environment variables (a local .env file, or the Render dashboard)
+# Secrets live in environment variables (a local .env file, or the Vercel/Render dashboard)
 load_dotenv(BASE_DIR / '.env')
+
+ON_VERCEL = bool(os.environ.get('VERCEL'))
 
 
 # Quick-start development settings - unsuitable for production
@@ -32,10 +34,15 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-local-dev-only')
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+CSRF_TRUSTED_ORIGINS = []
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
-    CSRF_TRUSTED_ORIGINS = [f'https://{RENDER_EXTERNAL_HOSTNAME}']
+    CSRF_TRUSTED_ORIGINS.append(f'https://{RENDER_EXTERNAL_HOSTNAME}')
+if ON_VERCEL:
+    ALLOWED_HOSTS.append('.vercel.app')
+    CSRF_TRUSTED_ORIGINS.append('https://*.vercel.app')
+if RENDER_EXTERNAL_HOSTNAME or ON_VERCEL:
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
@@ -104,7 +111,8 @@ WSGI_APPLICATION = 'ecommerece.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(
         default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
-        conn_max_age=600,
+        # Serverless functions on Vercel should not hold connections open
+        conn_max_age=0 if ON_VERCEL else 600,
     )
 }
 
@@ -150,6 +158,8 @@ STORAGES = {
     'default': {'BACKEND': 'django.core.files.storage.FileSystemStorage'},
     'staticfiles': {'BACKEND': 'whitenoise.storage.CompressedStaticFilesStorage'},
 }
+# Vercel has no collectstatic step, so WhiteNoise serves files straight from static/ and installed apps
+WHITENOISE_USE_FINDERS = ON_VERCEL
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
