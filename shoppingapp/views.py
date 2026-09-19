@@ -24,8 +24,7 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 def random_numbers():
-    return random.randint(999,10000)
-random_value=random_numbers()
+    return random.randint(1000,9999)
 
 
 def home(request):
@@ -58,6 +57,9 @@ def regiter(request):
             request.session['username']=username
             site=request.build_absolute_uri('/validation/')
             request.session['pending_email'] = email
+            # A fresh OTP per registration, kept in the session so every server worker can check it
+            random_value = random_numbers()
+            request.session['otp'] = str(random_value)
            
             form.save()
             
@@ -221,8 +223,8 @@ def validation(request):
         if form.is_valid():
             otp=form.cleaned_data.get('otp')
            
-            if otp == str(random_value): 
-
+            if otp == request.session.get('otp'):
+                request.session.pop('otp', None)
                 return redirect('login')
             else:
                 return HttpResponse("otp is not verified")
