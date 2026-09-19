@@ -1,4 +1,3 @@
-from pyexpat.errors import messages
 from django.shortcuts import get_object_or_404, render,redirect
 from shoppingapp.forms import registrationForm,login_form,forgetpass,requestotp,completeorderform,updateprofileform
 from django.contrib.auth import authenticate,login,logout
