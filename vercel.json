@@ -3,10 +3,18 @@
     {
       "src": "ecommerece/wsgi.py",
       "use": "@vercel/python",
-      "config": { "maxLambdaSize": "50mb" }
+      "config": {
+        "maxLambdaSize": "50mb"
+      }
     }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "ecommerece/wsgi.py" }
+    {
+      "src": "/(.*)",
+      "dest": "ecommerece/wsgi.py"
+    }
+  ],
+  "regions": [
+    "sin1"
   ]
 }
