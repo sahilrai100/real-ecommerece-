@@ -7,7 +7,7 @@ An online clothing store built with Django: product sections, product pages, car
 - PostgreSQL in production (SQLite locally)
 - Stripe (payments), Google reCAPTCHA, Gmail SMTP
 - Bootstrap 5 + django-crispy-forms
-- Hosted on Render (gunicorn + WhiteNoise)
+- Hosted on Vercel (serverless Python + WhiteNoise), database on Neon
 
 ## Run locally
 ```bash
@@ -22,13 +22,19 @@ python manage.py runserver
 ```
 Open http://127.0.0.1:8000
 
-## Deploy on Render
-1. Create a free PostgreSQL database (e.g. on neon.tech) and copy its connection string.
-2. On render.com: **New → Web Service**, select this repo.
-   - Build Command: `bash build.sh`
-   - Start Command: `gunicorn ecommerece.wsgi`
-3. Add the environment variables listed in `.env.example` (`DATABASE_URL` = the PostgreSQL string, `DEBUG` = `False`).
-4. Deploy. `build.sh` collects static files, runs migrations, loads the products on the first deploy and creates the admin user.
+## Deploy on Vercel
+1. Create a free PostgreSQL database on neon.tech and copy its connection string.
+2. From your computer, set up the database once:
+   ```bash
+   set DATABASE_URL=<neon connection string>
+   python manage.py migrate
+   python manage.py loaddata shop_data.json
+   python manage.py createsuperuser
+   ```
+3. On vercel.com: **Add New → Project**, import this repo, add the environment variables from `.env.example`, and deploy.
+   `vercel.json` routes every request to `ecommerece/wsgi.py`.
+
+After changing models, run `python manage.py migrate` against the Neon database again.
 
 ## Project structure
 ```
