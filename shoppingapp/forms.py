@@ -2,15 +2,13 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from shoppingapp.models import completeorder,updateprofile
-from django_recaptcha.fields import ReCaptchaField
 
 class registrationForm(UserCreationForm):
     email=forms.EmailField(required=True)
     phone=forms.IntegerField()
-    captcha=ReCaptchaField()
     class Meta: 
         model=User
-        fields=['username','email','password1','password2','phone','captcha']
+        fields=['username','email','password1','password2','phone']
     
     def clean_email(self):
         email=self.cleaned_data.get('email')

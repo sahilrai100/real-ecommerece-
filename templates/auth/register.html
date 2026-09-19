@@ -7,6 +7,13 @@
 
 <form action="" method='POST'>
     {% csrf_token %}
+    {% if form.errors %}
+    <div class="alert alert-danger">
+        {% for field, errors in form.errors.items %}
+            {% for error in errors %}<div>{% if field != '__all__' %}{{ field|capfirst }}: {% endif %}{{ error }}</div>{% endfor %}
+        {% endfor %}
+    </div>
+    {% endif %}
 {{ form|crispy }}
     <input type="submit" value="sign up" class="btn btn-success"style="width: 100%;" >
 </form>

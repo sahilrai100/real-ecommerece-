@@ -11,6 +11,7 @@ from django.views.generic import ListView,DetailView,TemplateView
 from django.contrib import messages  # make sure this import is there
 from django.core.mail import send_mail
 from django.conf import settings
+import logging
 import random
 import stripe
 from django.views.decorators.csrf import csrf_exempt
@@ -18,6 +19,8 @@ from django.views.decorators.csrf import csrf_exempt
 # <<< NEW: Stripe API key setup
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
+
+logger = logging.getLogger(__name__)
 
 # Create your views here.
 
@@ -70,7 +73,11 @@ def regiter(request):
             message = f"Hi {username},\n\nThank you for registering with us! \n your otp is {random_value} this otp is valid for 2 minutes\n click here {site}  to verify your otp  "
             from_email = settings.EMAIL_HOST_USER
             recipient_list = [email]
-            send_mail(subject, message, from_email, recipient_list ,fail_silently=True  )
+            try:
+                send_mail(subject, message, from_email, recipient_list)
+            except Exception:
+                # Don't block sign-up, but leave a trace in the server logs
+                logger.exception("Could not send OTP email to %s", email)
             return redirect('validation')
         
     else:
