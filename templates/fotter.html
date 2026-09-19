@@ -1,0 +1,73 @@
+  <!DOCTYPE html>
+  {% load static %}
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer Example</title>
+    <!-- Linking CSS -->
+    <link rel="stylesheet" href="{% static 'css/fotter.css' %}">
+    <style>
+    #f{
+      background: linear-gradient(135deg, #4b6cb7, #182848);
+    }
+    footer ul li a,footer p{
+        color: white;
+    }
+    
+  /* Footer hover effect */
+  footer ul li a:hover {
+    color: #ffd700;
+    text-decoration: underline;
+    transform: scale(1.1);
+    transition: 0.3s;
+  }
+
+  footer span i {
+    color: #ffd700;
+  }
+
+  /* Responsive footer */
+  @media (max-width:768px){
+    footer ul {
+      flex-direction: column;
+      gap:10px;
+    }
+    footer div {
+      flex-direction: column;
+      gap:10px;
+    }
+  }
+
+    
+    </style>
+  </head> 
+  
+
+<br>
+<br>
+{% block content %}
+  {% endblock  %}
+    
+ <body>   
+  <!-- Footer Section -->
+<footer id="f" style="background: rgba(1, 27, 88, 0.9); backdrop-filter: blur(10px); padding: 40px 0; color:white; font-family: Arial, sans-serif; margin-top:14.5%">
+  <div class="container text-center">
+    <ul style="list-style:none; padding:0; margin-bottom:20px; display:flex; justify-content:center; flex-wrap:wrap; gap:20px;">
+      <li><a href="{% url 'home' %}" style="color:white; text-decoration:none; font-weight:500;">Home</a></li>
+      <li><a href="#" style="color:white; text-decoration:none; font-weight:500;">Features</a></li>
+      <li><a href="#" style="color:white; text-decoration:none; font-weight:500;">Pricing</a></li>
+      <li><a href="#" style="color:white; text-decoration:none; font-weight:500;">FAQs</a></li>
+      <li><a href="{% url 'about' %}" style="color:white; text-decoration:none; font-weight:500;">About</a></li>
+    </ul>
+    <div style="margin-bottom:15px; font-size:14px; display:flex; justify-content:center; flex-wrap:wrap; gap:20px;">
+      <span><i class="bi bi-envelope-fill" style="margin-right:5px;"></i>officialzyanya@gmail.com</span>
+      <span><i class="bi bi-telephone-fill" style="margin-right:5px;"></i>+91 8827314198</span>
+    </div>
+    <hr style="width:80%; margin:20px auto; border-color: rgba(255,255,255,0.3);">
+    <p style="margin:0; font-size:14px;">© 2026 Zyanya Inc. All rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>
+  

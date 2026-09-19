@@ -1,0 +1,15 @@
+Django==4.2.23
+asgiref==3.8.1
+sqlparse==0.5.3
+tzdata==2025.2
+pillow==11.3.0
+django-crispy-forms==2.4
+crispy-bootstrap5==2025.6
+django-recaptcha==4.1.0
+stripe==13.0.1
+requests==2.32.5
+gunicorn==23.0.0
+whitenoise==6.9.0
+dj-database-url==3.0.1
+psycopg2-binary==2.9.10
+python-dotenv==1.1.1

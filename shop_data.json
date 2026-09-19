@@ -1,0 +1,520 @@
+[
+{
+  "model": "shoppingapp.section",
+  "pk": 1,
+  "fields": {
+    "section_name": "Men",
+    "section_image": "sectionimg/mens_section.png"
+  }
+},
+{
+  "model": "shoppingapp.section",
+  "pk": 2,
+  "fields": {
+    "section_name": "Women",
+    "section_image": "sectionimg/women_section_1-removebg-preview.png"
+  }
+},
+{
+  "model": "shoppingapp.section",
+  "pk": 3,
+  "fields": {
+    "section_name": "Kid",
+    "section_image": "sectionimg/kids_Section_1-removebg-preview.png"
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 1,
+  "fields": {
+    "product_name": "The Two Piece",
+    "product_img": "productimg/two_piece.webp",
+    "product_price": 7999,
+    "product_description": "Classic tailored two-piece suit. Perfect for formal events or office wear.",
+    "connection": 1
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 2,
+  "fields": {
+    "product_name": "The Three Piece",
+    "product_img": "productimg/three_piece.webp",
+    "product_price": 8999,
+    "product_description": "Elegant three-piece suit with waistcoat. Designed for weddings and grand occasions.",
+    "connection": 1
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 3,
+  "fields": {
+    "product_name": "The Olive Green",
+    "product_img": "productimg/olilve_green.webp",
+    "product_price": 3999,
+    "product_description": "Sophisticated olive green ensemble. A modern twist on classic suiting.",
+    "connection": 1
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 4,
+  "fields": {
+    "product_name": "The Chikankari",
+    "product_img": "productimg/chikankari.jpg",
+    "product_price": 799,
+    "product_description": "Handcrafted chikankari kurta. Lightweight and breezy for festive days.",
+    "connection": 1
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 5,
+  "fields": {
+    "product_name": "The Drapped",
+    "product_img": "productimg/drapped.jpg",
+    "product_price": 1199,
+    "product_description": "Contemporary draped outfit. Effortless fusion of tradition and style.",
+    "connection": 1
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 6,
+  "fields": {
+    "product_name": "The Mirror",
+    "product_img": "productimg/mirror.jpg",
+    "product_price": 1499,
+    "product_description": "Mirror-work kurta set. Adds sparkle and elegance to your wardrobe.",
+    "connection": 1
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 7,
+  "fields": {
+    "product_name": "The Banarsi",
+    "product_img": "productimg/banarsi.webp",
+    "product_price": 1799,
+    "product_description": "Traditional Banarasi weave. Rich texture with timeless appeal.",
+    "connection": 2
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 8,
+  "fields": {
+    "product_name": "The Kasavu",
+    "product_img": "productimg/kasavu.webp",
+    "product_price": 2499,
+    "product_description": "Classic Kerala Kasavu. Elegant gold borders for festive grace.",
+    "connection": 2
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 9,
+  "fields": {
+    "product_name": "The Chanderi",
+    "product_img": "productimg/chanderi.jpg",
+    "product_price": 999,
+    "product_description": "Lightweight Chanderi fabric. Soft sheen with a royal touch.",
+    "connection": 2
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 10,
+  "fields": {
+    "product_name": "The Kanjivaram",
+    "product_img": "productimg/kanjivaram.jpg",
+    "product_price": 2999,
+    "product_description": "South Indian Kanjivaram silk. Known for grandeur and durability.",
+    "connection": 2
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 11,
+  "fields": {
+    "product_name": "The Patola",
+    "product_img": "productimg/patola.webp",
+    "product_price": 1390,
+    "product_description": "Vibrant Patola patterns. A heritage piece for cultural celebrations.",
+    "connection": 2
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 12,
+  "fields": {
+    "product_name": "The Bengoli",
+    "product_img": "productimg/bangali.webp",
+    "product_price": 2499,
+    "product_description": "Bengali-style attire. Graceful drapes with traditional elegance.",
+    "connection": 2
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 13,
+  "fields": {
+    "product_name": "Cute Hoddie Look",
+    "product_img": "productimg/hoddies.jpg",
+    "product_price": 499,
+    "product_description": "Cozy hoodie with a trendy fit. Perfect for chilly days and casual outings.",
+    "connection": 3
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 14,
+  "fields": {
+    "product_name": "Unisex Jeans",
+    "product_img": "productimg/jeans.webp",
+    "product_price": 599,
+    "product_description": "Everyday denim for all. Durable, stylish, and versatile with any top.",
+    "connection": 3
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 15,
+  "fields": {
+    "product_name": "Unisex Tshirt",
+    "product_img": "productimg/tshirt.jpg",
+    "product_price": 250,
+    "product_description": "Basic unisex t-shirt. Lightweight comfort for daily wear",
+    "connection": 3
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 16,
+  "fields": {
+    "product_name": "Girl Kurti",
+    "product_img": "productimg/kurtis.webp",
+    "product_price": 399,
+    "product_description": "Simple cotton kurti. Easy to wear, stylish, and festive-ready",
+    "connection": 3
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 17,
+  "fields": {
+    "product_name": "Girls Skirts",
+    "product_img": "productimg/skirts.jpg",
+    "product_price": 150,
+    "product_description": "Playful skirts for girls. Pair with tops for a trendy look.",
+    "connection": 3
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 18,
+  "fields": {
+    "product_name": "Boy Shirt",
+    "product_img": "productimg/shirts.webp",
+    "product_price": 499,
+    "product_description": "Classic button-up shirt. Smart casual for school or family outings.",
+    "connection": 3
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 19,
+  "fields": {
+    "product_name": "Boy Kurta",
+    "product_img": "productimg/kurtas.jpg",
+    "product_price": 799,
+    "product_description": "Traditional kurta for boys. Comfortable fit with a festive touch.",
+    "connection": 3
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 20,
+  "fields": {
+    "product_name": "Loose Fit Tshirt",
+    "product_img": "productimg/loose_fit.webp",
+    "product_price": 799,
+    "product_description": "Relaxed fit cotton tee. Everyday comfort with a stylish edge.",
+    "connection": 1
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 21,
+  "fields": {
+    "product_name": "Casual Black Tshirt",
+    "product_img": "productimg/black.webp",
+    "product_price": 599,
+    "product_description": "Timeless black t-shirt. Essential for layering or solo wear",
+    "connection": 1
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 22,
+  "fields": {
+    "product_name": "Casual Polo",
+    "product_img": "productimg/polo.webp",
+    "product_price": 999,
+    "product_description": "Classic polo shirt. Smart casual look for outings or office Fridays.",
+    "connection": 1
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 23,
+  "fields": {
+    "product_name": "The V-Neck",
+    "product_img": "productimg/v_neck.webp",
+    "product_price": 449,
+    "product_description": "Chic v-neck design. Minimalist yet trendy everyday wear",
+    "connection": 1
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 24,
+  "fields": {
+    "product_name": "Casual White Tshirt",
+    "product_img": "productimg/white.webp",
+    "product_price": 299,
+    "product_description": "Clean white tee. Versatile must-have for every wardrobe.",
+    "connection": 1
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 25,
+  "fields": {
+    "product_name": "The Overshirt",
+    "product_img": "productimg/overshirt.jpg",
+    "product_price": 1799,
+    "product_description": "Layer-ready overshirt. Wear it open or buttoned for a street vibe.",
+    "connection": 1
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 26,
+  "fields": {
+    "product_name": "The Velvet",
+    "product_img": "productimg/velvet.jpg",
+    "product_price": 999,
+    "product_description": "Plush velvet shirt. Luxurious feel with a party-ready edge.",
+    "connection": 1
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 27,
+  "fields": {
+    "product_name": "The Cuban Collar",
+    "product_img": "productimg/cuban_collar.jpg",
+    "product_price": 1111,
+    "product_description": "Trendy Cuban collar shirt. Retro-inspired summer statement.",
+    "connection": 1
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 28,
+  "fields": {
+    "product_name": "The Denim",
+    "product_img": "productimg/denim.jpg",
+    "product_price": 899,
+    "product_description": "Durable denim shirt. Rugged style meets all-day comfort.",
+    "connection": 1
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 29,
+  "fields": {
+    "product_name": "The Half Sleeve",
+    "product_img": "productimg/half_sleeve.jpg",
+    "product_price": 1000,
+    "product_description": "Easygoing half-sleeve shirt. Casual comfort for daily wear.",
+    "connection": 1
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 30,
+  "fields": {
+    "product_name": "The Linen",
+    "product_img": "productimg/linen.jpg",
+    "product_price": 3199,
+    "product_description": "Breathable linen shirt. Perfect for hot days and beach vibes.",
+    "connection": 1
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 31,
+  "fields": {
+    "product_name": "Dark Blue Jeans",
+    "product_img": "productimg/dark_blue.webp",
+    "product_price": 2299,
+    "product_description": "Classic slim-fit denim. Goes with everything from tees to blazers.",
+    "connection": 1
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 32,
+  "fields": {
+    "product_name": "Slim Taparead Jeans",
+    "product_img": "productimg/slim_tapared_fit.webp",
+    "product_price": 799,
+    "product_description": "Modern tapered cut. Comfort with a sharp, stylish finish.",
+    "connection": 1
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 33,
+  "fields": {
+    "product_name": "The Punjabi Look",
+    "product_img": "productimg/punjabi.webp",
+    "product_price": 1299,
+    "product_description": "Classic Punjabi outfit. Bright, bold, and festive ready.",
+    "connection": 2
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 34,
+  "fields": {
+    "product_name": "The Afgani Look",
+    "product_img": "productimg/afghani.webp",
+    "product_price": 1000,
+    "product_description": "Afghani-inspired silhouette. Loose, comfy, and cultural.",
+    "connection": 2
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 35,
+  "fields": {
+    "product_name": "The Plazzo Look",
+    "product_img": "productimg/plazzo.webp",
+    "product_price": 2000,
+    "product_description": "Modern palazzo pairing. Easygoing and fashion-forward.",
+    "connection": 2
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 36,
+  "fields": {
+    "product_name": "The Pathani Look",
+    "product_img": "productimg/pathani.webp",
+    "product_price": 1599,
+    "product_description": "Pathani suit set. Regal yet casual for everyday style.",
+    "connection": 2
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 37,
+  "fields": {
+    "product_name": "The Bandhni Look",
+    "product_img": "productimg/bandhni.jpg",
+    "product_price": 799,
+    "product_description": "Traditional Bandhani prints. Colorful vibes from Rajasthan.",
+    "connection": 2
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 38,
+  "fields": {
+    "product_name": "The Anarkali",
+    "product_img": "productimg/anarkali.png",
+    "product_price": 2000,
+    "product_description": "Flowy Anarkali gown. Regal design with modern elegance.",
+    "connection": 2
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 39,
+  "fields": {
+    "product_name": "The Sharara",
+    "product_img": "productimg/sahara.webp",
+    "product_price": 3499,
+    "product_description": "Trendy sharara set. Festive yet comfortable to wear.",
+    "connection": 2
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 40,
+  "fields": {
+    "product_name": "The Asymmetrical",
+    "product_img": "productimg/Asymmetrical.webp",
+    "product_price": 2400,
+    "product_description": "Asymmetrical hem outfit. Edgy and contemporary fusion look.",
+    "connection": 2
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 41,
+  "fields": {
+    "product_name": "The Multilayer Lehanga",
+    "product_img": "productimg/multi_layer.jpg",
+    "product_price": 3999,
+    "product_description": "Layered lehenga design. Dramatic volume with graceful style.",
+    "connection": 2
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 42,
+  "fields": {
+    "product_name": "The Simple Lehanga",
+    "product_img": "productimg/simple.jpg",
+    "product_price": 1999,
+    "product_description": "Minimalist lehenga. Understated charm for subtle occasions.",
+    "connection": 2
+  }
+},
+{
+  "model": "shoppingapp.product",
+  "pk": 43,
+  "fields": {
+    "product_name": "The Banasi Lehanga",
+    "product_img": "productimg/banarsi.jpg",
+    "product_price": 6999,
+    "product_description": "Rich Banarasi lehenga. A statement piece for grand weddings.",
+    "connection": 2
+  }
+},
+{
+  "model": "shoppingapp.detailing",
+  "pk": 1,
+  "fields": {
+    "detail_connection": 1
+  }
+},
+{
+  "model": "shoppingapp.detailing",
+  "pk": 2,
+  "fields": {
+    "detail_connection": 2
+  }
+},
+{
+  "model": "shoppingapp.detailing",
+  "pk": 3,
+  "fields": {
+    "detail_connection": 3
+  }
+}
+]

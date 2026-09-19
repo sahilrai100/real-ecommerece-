@@ -1,0 +1,78 @@
+{% include "navbar.html" %}
+
+{% load custom_filters %}
+{% block content %}
+<h2 style="text-align:center; margin:30px 0; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Welcome to your Cart {{ request.user }} </h2>
+
+<div class="container" >
+  {% if cart_items %}
+    <table class="table table-bordered"style="color:cadetblue">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Product Picture</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in cart_items %}
+        <tr>
+          <td>{{ item.product.product_name }}</td>
+          {% if item.product.product_img %}
+          <td>
+            <img src="{{  item.product.product_img.url }}" alt="{{ item.product.product_name }}" style="width:7rem">
+          </td>
+
+          {% endif %}
+          <td>₹{{ item.product.product_price }}</td>  
+
+
+            <td style="display:flex; gap:5px;">
+              <a href="{% url 'subtract_quantity' item.id %}" class="btn btn-sm btn-danger">-</a>
+              {{ item.quantity }}
+          
+              <a href="{% url 'add_quantity' item.id %}" class="btn btn-sm btn-success">+</a>
+            </td>
+
+          
+         <td>₹{{ item.product.product_price|mul:item.quantity }}</td>
+          <td>
+            <a href="{% url 'remove_item' item.id %}" class="btn btn-sm btn-warning">Remove</a>
+          </td>
+        </tr>
+        {% endfor %}
+        <tr>
+          <td colspan="4" style="text-align:right;"><strong>Total Amount :</strong></td>
+          <td>₹{{ total_price }}</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  {% else %}
+    <p style="text-align:center; margin-top:50px;">Your cart is empty.</p>
+  {% endif %}
+</div>
+{% if cart_items %}
+
+<div style="display: flex;justify-content: space-between; align-item:center">
+ <button style="paddding-left:6%;margin-left:5.8rem" class="btn btn-danger" onclick="window.history.back()"><i class="bi bi-arrow-left"></i> Add more item</button>
+
+<a href="{% url 'checkout' %}"><button style="paddding-right:6%;margin-right:5.8rem"  class="btn btn-secondary">Continue <i class="bi bi-arrow-right"></i> </button></a>
+{% else %}
+
+
+<div style="display: flex;justify-content: space-between; align-item:center">
+ <button style="paddding-left:6%;margin-left:5.8rem" class="btn btn-danger" onclick="window.history.back()"><i class="bi bi-arrow-left"></i> Add  item</button>
+
+{% endif %}
+
+</div>
+
+
+
+{% endblock content %}
+
+{% include "fotter.html" %}

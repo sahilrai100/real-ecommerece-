@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zyanya</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
+        rel="stylesheet" 
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" 
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <style>
+        body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f6fa;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      width: 250px;
+      height: 100%;
+      background: linear-gradient(135deg, #4b6cb7, #182848);
+      padding-top: 60px;
+      transition: 0.3s ease;
+      box-shadow: 2px 0 8px rgba(0,0,0,0.3);
+      z-index: 1000;
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 15px 25px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateX(5px);
+    }
+
+    .sidebar a i {
+      margin-right: 10px;
+    }
+
+    /* Toggle button */
+    #toggle-btn {
+      font-size: 26px;
+      cursor: pointer;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      color: #182848;
+      z-index: 1100;
+    }
+    /* Make links white and smooth transition */
+    a { color: white; transition: all 0.3s ease; }
+    a:hover { color: #ffd700; text-decoration: none; }
+
+    /* Mobile menu toggle button */
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: white;
+    }
+
+    @media (max-width: 992px) {
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        right: -100%;
+        flex-direction: column;
+        background: linear-gradient(135deg, #4b6cb7, #182848);
+        width: 220px;
+        padding: 1rem;
+        border-radius: 0 0 10px 10px;
+        transition: right 0.3s ease-in-out;
+        gap: 10px;
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .nav-links li {
+        text-align: center;
+        padding: 12px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+      <!-- Toggle Button -->
+  <i id="toggle-btn" class="bi bi-list"></i>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <a href="{% url 'home' %}"><i class="bi bi-house-door-fill"></i></i> Home</a>
+    <a href="{% url 'profile' %}"><i class="bi bi-person-lines-fill"></i> Profile</a>
+    <a href="{% url 'wishlist' %}"><i class="bi bi-heart"></i> Wishlist</a>
+    <a href="{% url 'cart' %}"><i class="bi bi-cart4"></i> Cart</a>
+    <a href="{% url 'coupnes' %}"><i class="bi bi-ticket-perforated"></i> Coupons</a>
+    <a href="{% url 'logout' %}"><i class="bi bi-box-arrow-right"></i> Log out</a>
+  </div>  
+
+  <script>
+    const toggleBtn = document.getElementById("toggle-btn");
+    const sidebar = document.getElementById("sidebar");
+
+    toggleBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("active");
+    });
+  </script>
+{% if messages %}
+<div style="position:fixed; top:70px; right:20px; z-index:9999;">
+  {% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+{% if user.is_authenticated %}
+<nav class="navbar">
+  <div class="logo" style="cursor:pointer;">
+    <a href="{% url 'profile' %}" style="display:flex; align-items:center;margin-left:20%">
+      <i class="bi bi-person-circle" style="padding-right:0.5rem; transition: transform 0.3s;"></i>
+      {{ user.username }}
+    </a>
+  </div>
+  
+  <span class="menu-toggle" onclick="toggleMenu()">&#9776;</span>
+
+  <ul class="nav-links">
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'wishlist' %}">Wishlist</a></li>
+    <li><a href="{% url 'about' %}">About us</a></li>
+    <li><a href="{% url 'logout' %}">Log out</a></li>
+    <li><a href="{% url 'cart' %}"><i class="bi bi-cart4"></i></a></li>
+    <li><a href="#"><i class="bi bi-search"></i></a></li>
+    <li>
+      <button id="btn" class="theme-btn">
+        <span id="span">🌙</span>
+      </button>
+    </li>
+  </ul>
+</nav>
+
+{% else %}
+<nav class="navbar">
+  <div class="logo">
+    <a href="{% url 'login' %}" >
+      <i class="bi bi-person-circle" style="margin-left:70%"></i>
+    </a>
+  </div>
+
+  <span class="menu-toggle" onclick="toggleMenu()">&#9776;</span>
+
+  <ul class="nav-links">
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'wishlist' %}">Wishlist</a></li>
+    <li><a href="{% url 'about' %}">About us</a></li>
+    <li><a href="{% url 'register' %}">Register</a></li>
+    <li><a href="{% url 'login' %}">Login</a></li>
+    <li><a href="#"><i class="bi bi-search"></i></a></li>
+    <li><a href="{% url 'cart' %}"><i class="bi bi-cart4"></i></a></li>
+    <li>
+      <button id="btn" class="theme-btn">
+        <span id="span">🌙</span>
+      </button>
+    </li>
+  </ul>
+</nav>
+{% endif %}
+
+<br><br>
+{% block content %}
+{% endblock %}
+
+<script src="{% static 'js/script.js' %}"></script>
+<script>
+  function toggleMenu() {
+    document.querySelector('.nav-links').classList.toggle('active');
+  }
+</script>
+</body>
+</html>

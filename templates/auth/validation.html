@@ -1,0 +1,31 @@
+{% include "navbar.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+ <!-- Confirmation box like PythonAnywhere -->
+    <div class="alert alert-info mt-4 text-center" role="alert" style="margin-top:20px; padding:15px; border-radius:8px;">
+        <h4 class="alert-heading">Almost there! 🎉</h4>
+        <p>A confirmation link was sent to <strong>{{ pending_email }}</strong>.</p>
+        <p>All users need to have a confirmed email address to continue.  
+           Check your inbox for an email from us and click the link to verify your account.</p>
+        
+    </div>
+
+</div>
+
+<!-- otp -->
+<div style="margin:auto;height: 50%; width: 30%;color:red">
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+
+        <input type="submit" value="confirm" class="btn btn-success" style="width: 100%;">
+    </form>
+</div>
+    {% endblock content %}
+
+{% include "fotter.html" %}

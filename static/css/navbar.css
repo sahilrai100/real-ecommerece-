@@ -1,0 +1,72 @@
+  /* Navbar container */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #4b6cb7, #182848);
+    padding: 12px 40px;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  /* Logo */
+  .logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+
+  /* Navigation links */
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+  }
+
+  .nav-links li {
+    padding: 8px 16px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  /* Hover effect */
+  .nav-links li:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    cursor: pointer;
+  }
+
+  /* Theme button */
+  .theme-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+    margin-left: 20px;
+    transition: transform 0.3s ease;
+  }
+  .theme-btn:hover {
+    transform: rotate(20deg);
+  }
+
+  /* Light Theme */
+  body {
+    background: white;
+    color: black;
+    transition: background 0.4s, color 0.4s;
+  }
+
+  /* Dark Theme */
+  body.dark {
+    background: #121212;
+    color: white;
+  }

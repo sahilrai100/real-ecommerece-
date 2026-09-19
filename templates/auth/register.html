@@ -1,0 +1,21 @@
+{% include "navbar.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div  style="margin:auto;height: 50%; width: 30%;color:red" >
+
+<form action="" method='POST'>
+    {% csrf_token %}
+{{ form|crispy }}
+    <input type="submit" value="sign up" class="btn btn-success"style="width: 100%;" >
+</form>
+    <hr>
+     <a href="{% url 'login' %}" class="btn btn-secondary"style="width: 100%;"> Sign in </a>
+     
+</div>  
+      
+{% endblock content %}
+
+
+{% include "fotter.html" %}

@@ -1,0 +1,123 @@
+{% include "navbar.html" %}
+{% load static %}
+{% load custom_filters %}
+{% load crispy_forms_tags %}
+{% comment %} <link rel="stylesheet" href="{% static 'css/style.css' %}"> {% endcomment %}
+{% block content %}
+
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-6">
+
+                <div class="card card-body">
+                    <!-- Existing Order Form -->
+                    <form id="order-form" action="" method='POST'>  <!-- <<< MODIFIED: added id="order-form" -->
+                        {% csrf_token %}
+                        
+                        {{ form|crispy }}
+
+                    </form>
+                </div> 
+               
+            </div>
+
+           <div class="col-md-6">
+    <div class="card card-body" style="padding:20px; border:1px solid #ddd; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1); background:#fafafa; height: 100%;" >
+        
+        {% for item in cart_items %}
+            {% if item.product.product_img %}
+            
+            <div style="display:flex; align-items:center; gap:15px; margin-bottom:15px; padding:10px; border-bottom:1px solid #e0e0e0;">
+                <img src="{{ item.product.product_img.url }}" alt="{{ item.product.product_name }}" style="width: 120px; height:auto; border-radius:8px; object-fit:cover; border:1px solid #ccc;">
+                <div>
+                    <h6 style="margin:0; font-size:16px; font-weight:600; color:#333;">{{ item.product.product_name }}</h6>
+                    <h6 style="margin:5px 0; font-size:14px; color:#555;">Price: ₹{{ item.product.product_price }}</h6>
+                    <h6 style="margin:0; font-size:14px; color:#555;">Total Quantity: {{ item.quantity }}</h6>
+                    <h6 style="margin:0; font-size:14px; color:#555;">Total cost ₹{{ item.product.product_price|mul:item.quantity }}</h6>
+                </div>
+            </div>
+
+            {% endif %}
+        {% endfor %}
+
+        <h2 style="text-align:right; margin-top:20px; font-size:20px; font-weight:700; color:#222; border-top:2px solid #ccc; padding-top:10px;">
+            Grand Total : ₹{{ total_price }}
+        </h2>
+
+        <!-- <<< Stripe Card Payment Form >>> -->
+        <hr>
+        <h3>Pay with Card</h3>
+        <form id="payment-form">
+            <div id="card-element" style="padding:10px; border:1px solid #ccc; border-radius:5px;"></div>
+            <button id="submit" class="btn btn-success" style="margin-top:15px;">Pay ₹{{ total_price }}</button>
+            <p id="error-message" style="color:red; margin-top:10px;"></p>
+        </form>
+
+    </div>
+</div>
+
+  
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<!-- <<< Stripe JS Integration >>> -->
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+const stripe = Stripe("{{ STRIPE_PUBLISHABLE_KEY }}");
+const elements = stripe.elements();
+const card = elements.create("card");
+card.mount("#card-element");
+
+const form = document.getElementById("payment-form");
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // Fetch client secret from backend
+    const response = await fetch("{% url 'create_payment_intent' %}", {
+        method: "POST",
+        headers: {'X-CSRFToken': '{{ csrf_token }}'},
+    });
+
+    const data = await response.json();
+
+    if(data.error){
+        document.getElementById("error-message").textContent = data.error;
+        return;
+    }
+
+    const clientSecret = data.client_secret;
+
+    // Confirm card payment
+    const result = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: { card: card },
+    });
+
+    if(result.error){
+        document.getElementById("error-message").textContent = result.error.message;
+    } else if(result.paymentIntent.status === 'succeeded'){
+        // <<< FIXED: Send full checkout form data to backend after payment success >>>
+        const orderFormData = new FormData(document.querySelector("#order-form")); // <<< MODIFIED
+        fetch("{% url 'confirm_payment' %}", {
+            method: "POST",
+            headers: {'X-CSRFToken': '{{ csrf_token }}'},
+            body: orderFormData
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.success){
+                window.location.href = "{% url 'orderplaced' %}";
+            } else {
+                document.getElementById("error-message").textContent = data.error || 'Something went wrong';
+            }
+        });
+    }
+});
+</script>
+
+{% endblock content %}
+
+{% include "fotter.html" %}

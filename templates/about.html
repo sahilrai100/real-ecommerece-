@@ -1,0 +1,180 @@
+{% include "navbar.html" %}
+{% block content %}
+
+
+{% load static %}
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    /* Hero/About Section */
+    .about-hero {
+      background: linear-gradient(135deg, #4091edff, #032a5eff);
+      color: white;
+      padding: 120px 20px 60px;
+      text-align: center;
+      border-bottom-left-radius: 50px;
+      border-bottom-right-radius: 50px;
+    }
+    .about-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    }
+    .about-hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    /* Features Section */
+    .features {
+      text-align: center;
+      padding: 60px 20px;
+      background: #fff;
+    }
+    .features i {
+      font-size: 2.5rem;
+      color: #1696dcff;
+      transition: transform 0.3s, color 0.3s;
+    }
+    .features i:hover {
+      transform: scale(1.3);
+      color: #033068ff;
+    }
+    .features h6 {
+      margin-top: 12px;
+      font-weight: 600;
+      color: #3f71e3ff;
+      letter-spacing: 1px;
+    }
+    .features p {
+      font-size: 14px;
+      color: #555;
+      margin-top: 5px;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #4b6cb7, #182848);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 14px;
+    }
+    footer ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    footer ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    footer ul li a:hover {
+      color: #e4c30cff;
+      text-decoration: underline;
+    }
+    footer div.contact-info {
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    footer div.contact-info i {
+      color: #ffd700;
+      margin-right: 5px;
+    }
+
+    /* Responsive */
+    @media(max-width:768px){
+      .about-hero h1 {
+        font-size: 2.2rem;
+      }
+      .features i {
+        font-size: 2rem;
+      }
+    }
+  </style>
+
+
+<!-- Hero/About Section -->
+<section class="about-hero">
+  <h1 >About Zyanya</h1>
+  <p>Zyanya is your ultimate fashion destination, delivering style, comfort, and quality for men, women, and kids. We bring you carefully crafted products designed with love, all while supporting the spirit of Made in India. Shop confidently with free delivery, easy returns, and secure payments.</p>
+</section>
+
+ <center>
+      <h1 style="margin-top:4%; margin-bottom:2%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          font-size: 35px; font-style: italic; font-weight: 700;color:  #4273e4ff"  id="h">
+          Why Zyanya ?
+      </h1>
+  </center>
+
+
+
+<!-- Features Section -->
+<section class="features">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-2 col-6 mb-4">
+        <i class="bi bi-heart"></i>
+        <h6>MADE IN INDIA</h6>
+        <p>Our products are truly Made in India</p>
+      </div>
+      <div class="col-md-2 col-6 mb-4">
+        <i class="bi bi-truck"></i>
+        <h6>FREE DELIVERY</h6>
+        <p>Enjoy free delivery on all orders</p>
+      </div>
+      <div class="col-md-2 col-6 mb-4">
+        <i class="bi bi-gift"></i>
+        <h6>EASY RETURNS</h6>
+        <p>Shop with confidence, enjoy easy returns</p>
+      </div>
+      <div class="col-md-2 col-6 mb-4">
+        <i class="bi bi-person-lines-fill"></i>
+        <h6>TOP-NOTCH SUPPORT</h6>
+        <p>Experience best support, ensuring your satisfaction</p>
+      </div>
+      <div class="col-md-2 col-6 mb-4">
+        <i class="bi bi-shield-lock"></i>
+        <h6>SECURE PAYMENTS</h6>
+        <p>Shop securely with our trusted payment options</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <ul>
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="#">Features</a></li>
+    <li><a href="#">Pricing</a></li>
+    <li><a href="#">FAQs</a></li>
+    <li><a href="{% url 'about' %}">About</a></li>
+  </ul>
+  <div class="contact-info">
+    <span><i class="bi bi-envelope-fill"></i>officialzyanya@gmail.com</span>
+    <span><i class="bi bi-telephone-fill"></i>+91 98765 43210</span>
+  </div>
+  <p>© 2025 Zyanya Inc. All rights reserved.</p>
+</footer>
+
+
+{% endblock content %}

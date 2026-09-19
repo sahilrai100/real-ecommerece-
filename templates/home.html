@@ -1,0 +1,141 @@
+{% include "navbar.html" %}
+
+{% load static %}
+{% block content %}
+
+
+
+
+
+<section class="hero" style="background: linear-gradient(135deg, #4b6cb7, #182848); color: white; padding: 5rem 2rem; text-align: center; border-radius: 12px; margin: 2% auto; max-width: 1200px;">
+    <div>
+        <!-- Logo (text-based for now, you can replace with an image later) -->
+        <h1 style="font-size: 60px; font-weight: 900; letter-spacing: 3px; font-family: 'Poppins', sans-serif;">
+            Zyanya
+        </h1>
+        <p style="font-size: 20px; margin-top: 10px; font-style: italic;">
+            Forever in Fashion ✨
+        </p>
+        <a href="{% url 'home' %}" class="btn btn-light btn-lg mt-4" style="border-radius: 30px; font-weight: 600; padding: 10px 25px;">
+            Shop Now
+        </a>
+    </div>
+</section>
+
+
+<!-- 👕 Women / Men / Kids Section -->
+ 
+<div class="container mt-5">
+    <div class="row">
+        {% for section in section_display %}
+        <div class="col-md-4 mb-4">
+            <a href="{% url 'detail' section.id %}" style="text-decoration:none; color:black">
+                <div class="card card-body h-100">
+                    {% if section.section_image %}
+                        <img src="{{ section.section_image.url }}" alt="{{ section.section_name }}" class="img-fluid">
+                    {% endif %}
+                    <center><h5><b>{{ section.section_name }}</b></h5></center>
+                </div>
+            </a>
+        </div>
+        {% endfor %}    
+    </div>
+    <hr>
+</div>
+
+<!-- 🔥 Trending Section -->
+
+<center>
+    <h1 style="margin:3%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 35px; font-style: italic; font-weight: 700;color:  #4b6cb7"  id="h">
+        Trending 🔥
+    </h1>
+</center>
+
+
+<div class="container"> 
+    
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-3">
+                <a href="#" style="text-decoration:none; color:black">
+                    <div class="card card-body" style="height:100%; width:100%;">
+                        <img src="{% static 'images/bangali.webp' %}" alt="" style="height:23rem">
+                        <center><p style="margin:5%"><b>Bengali Saree</b></p></center>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-3">
+                <a href="#" style="text-decoration:none; color:black">
+                    <div class="card card-body" style="height:100%; width:100%;">
+                        <img src="{% static 'images/overshirt.jpg' %}" alt="" style="height:23rem">
+                        <center><p style="margin:5%"><b>Over-Shirt</b></p></center>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-3">
+                <a href="#" style="text-decoration:none; color:black">
+                    <div class="card card-body" style="height:100%; width:100%;">
+                        <img src="{% static 'images/afghani.webp' %}" alt="" style="height:23rem">
+                        <center><p style="margin:5%"><b>Afgani Suit</b></p></center>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-3">
+                <a href="#" style="text-decoration:none; color:black">
+                    <div class="card card-body" style="height:100%; width:100%;">
+                        <img src="{% static 'images/chikankari.webp' %}" alt="" style="height:23rem">
+                        <center><p style="margin:5%"><b>Chikankari Kurti</b></p></center>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <hr>
+</div>
+
+<!-- sending message -->
+<div style="max-width:600px; margin:50px auto; padding:30px; background:#fff; border-radius:15px; box-shadow:0 4px 25px rgba(0,0,0,0.15); font-family:'Poppins',sans-serif;">
+
+    <h2 style="margin-bottom:25px; font-size:26px; font-weight:700; text-align:center;
+               background:linear-gradient(135deg,#6a11cb,#2575fc); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">
+        Feel Free to Connect With Us
+    </h2>
+
+    <form action="#" method="POST">
+        {% csrf_token %}
+
+        <!-- Subject -->
+        <div style="margin-bottom:20px;">
+            <label for="subject" style="display:block; margin-bottom:8px; font-size:14px; font-weight:600; color:#444;">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="Enter your subject" required
+                style="width:100%; padding:12px 15px; border:1px solid #ccc; border-radius:10px; font-size:15px; outline:none; transition:border 0.3s, box-shadow 0.3s;">
+        </div>
+
+        <!-- Message -->
+        <div style="margin-bottom:20px;">
+            <label for="message" style="display:block; margin-bottom:8px; font-size:14px; font-weight:600; color:#444;">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required
+                style="width:100%; padding:12px 15px; border:1px solid #ccc; border-radius:10px; font-size:15px; outline:none; transition:border 0.3s, box-shadow 0.3s;"></textarea>
+        </div>
+
+        <!-- Send Button -->
+        <div style="text-align:center;">
+            <button type="submit"
+                style="background:linear-gradient(135deg,#6a11cb,#2575fc); color:#fff; padding:12px 35px; border:none; border-radius:10px; cursor:pointer; font-size:16px; font-weight:600; transition:all 0.3s ease;">
+                Send Message 🚀
+            </button>
+        </div>
+    </form>
+</div>
+
+
+{% endblock content %}
+
+
+
+
+{% include "fotter.html" %}
